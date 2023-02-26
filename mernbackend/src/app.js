@@ -8,11 +8,14 @@ const port = process.env.PORT || 3000;
 const static_path = path.join(__dirname, "../public");
 
 //Linking app.js & index.html
-app.use(express.static(static_path))
+app.use(express.static(static_path));
+
+//Setting view Engine (get data from index.hbs)
+app.set("view engine", "hbs");
 
 //Home Page
 app.get("/", (req, res) => {
-    res.send(`Hey`)
+    res.render("index");
 });
 
 app.listen(port, () => {
