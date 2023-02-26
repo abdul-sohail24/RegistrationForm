@@ -7,3 +7,5 @@ Packages used:
 2) Mongoose
 3) Handle Bars (hbs)
 4) Nodemon (analogous to live server)
+
+Express is used in linking app.js with index.html
