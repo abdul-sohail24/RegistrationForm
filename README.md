@@ -11,3 +11,5 @@ Packages used:
 Express is used in linking app.js with index.html
 
 hbs is basically HTML only (template engine)
+
+Linked index.hbs & app.js using set module (i.e. app.set())
