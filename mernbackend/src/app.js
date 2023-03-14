@@ -40,10 +40,33 @@ app.get("/register", (req, res) => {
 //Create a New User in DB
 app.post("/register", async (req, res) => {
     try {
-        console.log(req.body.firstname);
-        res.send(req.body.firstname);
+        const password = req.body.password;
+        const cpassword = req.body.confirmpassword;
+
+        if(password === cpassword) {
+            const registerEmployee = new Register({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                gender: req.body.gender,
+                phone: req.body.phone,
+                age: req.body.age,
+                password: req.body.password,
+                confirmpassword: req.body.password
+            })
+            console.log("the success part" + registerEmployee);
+
+            const registered = await registerEmployee.save();
+            res.status(201).render("index");
+
+            console.log(registered);
+
+        } else {
+            res.send("password aren't matching");
+        }
     }
     catch(e) {
+        console.log("Error");
         res.status(400).send(e);
     }
 })
